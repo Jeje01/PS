@@ -4,7 +4,7 @@ class Solution {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
         int pos = -1;
-        int l = 0, i, j, k;
+        int i, j, k, l;
         char[] exist = new char[26];
         char[] tree = skill.toCharArray();
         for(i = 0; i<skill_trees.length; i++){ //각 스킬
