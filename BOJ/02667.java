@@ -2,29 +2,23 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
     static int[][] arr;
     static int cnt=0;
+    static int[][] p = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     public static int dfs(int i, int j){
+        int a;
         arr[i][j]=0; cnt++;
-        if(0<=i+1 && i+1<arr.length)
-            if(arr[i+1][j]==1){//↓
-                dfs(i+1, j);
+        for(a=0; a<p.length; a++){
+            int x = i+p[a][0], y = j+p[a][1];
+            if(0<=x && x<arr.length && 0<=y && y<arr.length){
+                if(arr[x][y]==1){
+                    dfs(x, y);
+                }
             }
-        if(0<=j+1 && j+1<arr.length)
-            if(arr[i][j+1]==1){//→
-                dfs(i, j+1);
-            }
-        if(0<=i-1 && i-1<arr.length)
-            if(arr[i-1][j]==1){//↑
-                dfs(i-1, j);
-            }
-        if(0<=j-1 && j-1<arr.length)
-            if(arr[i][j-1]==1){//←
-                dfs(i, j-1);
-            }
+        }
         return cnt;
     }
 
@@ -48,13 +42,10 @@ public class Main {
                 }
             }
         }
-        int[] answer = new int[list.size()];
-        for(i=0; i<list.size(); i++){
-            answer[i] = list.get(i);
-        }
-        Arrays.sort(answer);
+        Collections.sort(list);
         System.out.println(list.size());
-        for(i=0; i<answer.length; i++)
-            System.out.println(answer[i]);
+        for(i=0; i<list.size(); i++)
+            System.out.println(list.get(i));
     }
+}
 }
