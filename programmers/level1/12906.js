@@ -1,13 +1,12 @@
 // 같은 숫자는 싫어
 
-function solution(s) {
-    var answer = 0;
-    if(s[0]=="-"){
-        answer = (-1)*parseInt(s.substring(1));
-    }else if(s[0]=="+"){
-        answer = parseInt(s.substring(1));
-    }else{
-        answer = parseInt(s);
+function solution(arr)
+{
+    var answer = [];
+    answer.push(arr[0]);
+    for(var i=1; i<arr.length; i++){
+        if(arr[i]!=arr[i-1])
+            answer.push(arr[i]);
     }
     return answer;
 }
