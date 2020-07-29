@@ -1,4 +1,9 @@
-// 농작물 수확하기
+/*
+ * 농작물 수확하기
+ * 배열
+ * 21,252 kb
+ * 131 ms
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;
