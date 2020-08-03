@@ -1,8 +1,8 @@
 /**
  * 현빈이와 Spot Mart
  * DFS
- * 24,068 kb
- * 203 ms
+ * 25,196 kb
+ * 190 ms
  */
  
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ public class Solution {
     static boolean[] visited;
     static int answer, N, M, gap;
      
-    public static void dfs(int r, int sum) {
+	public static void dfs(int r, int sum) {
         if(r==0) {
             if(M>=sum && M-sum<gap) {
                 gap = M-sum;
@@ -27,6 +27,7 @@ public class Solution {
             return;
         }
         for(int i=0; i<snack.length; i++) {
+        	if(M==answer) return;
             if(!visited[i]) {
                 visited[i] = true;
                 dfs(r-1, sum+snack[i]);
@@ -35,7 +36,7 @@ public class Solution {
         }
         return;
     }
-     
+	     
     public static void main(String[] args) throws NumberFormatException, IOException {
         int TC = Integer.parseInt(input.readLine());
         for(int t=1; t<=TC; t++) {
