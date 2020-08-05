@@ -1,5 +1,5 @@
 //DFS
-
+/* 1
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,3 +49,76 @@ public class Main {
     }
 }
 }
+*/
+
+
+// 2 - 200805
+/**
+ * 단지번호로붙이기
+ * DFS
+ * 13,068 kb
+ * 80 ms
+ */
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static StringBuilder output = new StringBuilder();
+    static int[][] map;
+    static int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    static int N, houses, cnt;
+    static String line = "";
+    static ArrayList<Integer> list = new ArrayList<>();
+
+    public static void dfs(int r, int c) {
+        map[r][c]=0;
+        houses++;
+        for(int i=0; i<dirs.length; i++) {
+            int nr = r+dirs[i][0];
+            int nc = c+dirs[i][1];
+            if((nr>=0 && nr<N && nc>=0 && nc<N)&& map[nr][nc]==1) {
+               dfs(nr, nc);
+
+            }
+        }
+        return;
+        
+    }
+    
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        N = Integer.parseInt(input.readLine());
+        map = new int[N][N];
+        for(int i=0; i<N; i++) {
+            line = input.readLine();
+            for(int j=0; j<N; j++) {
+                map[i][j] = line.charAt(j)-'0';
+            }
+        }
+        for(int i=0; i<N; i++) {
+            for(int j=0; j<N; j++) {
+                if(map[i][j]==1) {
+                    houses=0;
+                    dfs(i, j);
+                    cnt++;
+                    list.add(houses);
+                }
+            }
+        }
+        Collections.sort(list);
+        output.append(cnt).append("\n");
+        for(int i=0; i<list.size(); i++) {
+            output.append(list.get(i)).append("\n");
+        }
+        System.out.println(output.toString());
+        
+
+    }
+
+}
+
+
