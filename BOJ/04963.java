@@ -1,5 +1,7 @@
 //DFS
 
+/* 1
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -52,3 +54,76 @@ public class Main {
             System.out.println(list.get(i));
     }
 }
+
+*/
+
+
+// 2 - 200805
+
+/**
+ * 섬의 개수
+ * DFS
+ * 14,764 kb
+ * 120 ms
+ */
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static StringBuilder output = new StringBuilder();
+    static StringTokenizer tokens;
+    static int w, h, answer;
+    static int[][] map;
+    static int[][] dirs = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    static String line = "";
+
+    public static void dfs(int r, int c) {
+        for(int i=0; i<dirs.length; i++) {
+            int nr = r+dirs[i][0];
+            int nc = c+dirs[i][1];
+            if(nr>=0 && nr<map.length && nc>=0 && nc<map[0].length) {
+                if(map[nr][nc]==1) {
+                    map[nr][nc]=0;
+                    dfs(nr, nc);
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) throws IOException {
+        
+        while(true) {            
+            tokens = new StringTokenizer(input.readLine(), " ");
+            h = Integer.parseInt(tokens.nextToken());
+            w = Integer.parseInt(tokens.nextToken());
+            if(h==0 && w==0)
+                break;
+            answer = 0;
+            map = new int[w][h];
+            for(int i=0; i<map.length; i++) {
+                tokens = new StringTokenizer(input.readLine(), " ");
+                for(int j=0; j<map[0].length; j++) {
+                    map[i][j] = Integer.parseInt(tokens.nextToken());
+                }
+            }
+            for(int i=0; i<map.length; i++) {
+                for(int j=0; j<map[0].length; j++) {
+                    if(map[i][j]==1) {
+                        dfs(i, j);
+                        answer++;
+                    }
+                }
+            }
+            
+            output.append(answer).append("\n");
+        }
+        System.out.println(output.toString());
+
+    }
+
+}
+
