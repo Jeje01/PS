@@ -1,5 +1,7 @@
 //BFS - 토마토
 
+//1
+
 import java.util.Scanner;
 import java.util.Queue;
 import java.util.LinkedList;
@@ -71,4 +73,75 @@ public class Main {
         System.out.println(answer);
 
     }
+}
+
+
+// 2 - 200805
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class Main {
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static StringBuilder output = new StringBuilder();
+    static StringTokenizer tokens;
+    static int M, N, answer, count, max;
+    static int[][] map;
+    static boolean[][] visited;
+    static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    static Queue<int[]> queue = new LinkedList<>();
+    
+    static void bfs() {
+        while(!queue.isEmpty()) {
+            int[] next = queue.poll();
+            count++;
+            max = next[2]>max? next[2]: max;
+            for(int i=0; i<4; i++) {
+                int nr = next[0]+dirs[i][0];
+                int nc = next[1]+dirs[i][1];
+                if((nr>=0 && nr<N && nc>=0 && nc<M) && map[nr][nc]==0) {
+                    queue.offer(new int[] {nr, nc, next[2]+1});
+                    map[nr][nc]=1;
+                    visited[nr][nc] = true;
+                    
+                }
+            }
+        }
+        return ;
+    }
+    
+    public static void main(String[] args) throws IOException {
+        tokens = new StringTokenizer(input.readLine(), " ");
+        M = Integer.parseInt(tokens.nextToken());
+        N = Integer.parseInt(tokens.nextToken());
+        map = new int[N][M];
+        visited = new boolean[N][M];
+        for(int i=0; i<N; i++) {
+            tokens = new StringTokenizer(input.readLine(), " ");
+            for(int j=0; j<M; j++)
+                map[i][j] = Integer.parseInt(tokens.nextToken());
+        }
+        for(int i=0; i<map.length; i++) {
+            for(int j=0; j<map[0].length; j++) {
+                if(map[i][j]==-1) count++;
+                if(!visited[i][j] && map[i][j]==1) {
+                    queue.offer(new int[] {i, j, 0});
+                }
+            }
+        }
+        bfs();
+        
+        if(count!=M*N)
+            answer = -1;
+        else {
+            answer = max;
+        }
+        output.append(answer);
+        System.out.println(output.toString());
+    }
+
 }
