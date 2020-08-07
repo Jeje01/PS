@@ -61,3 +61,63 @@ public class Main {
     }
 
 }
+
+/* - BFS
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+
+public class Main {
+	static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+	static StringBuilder output = new StringBuilder();
+	static StringTokenizer tokens;
+	static int N, K, answer;
+	static boolean[] visited;
+	static Queue<int[]> queue = new LinkedList<int[]>();
+	
+	public static void main(String[] args) throws IOException {
+		tokens = new StringTokenizer(input.readLine(), " ");
+		N = Integer.parseInt(tokens.nextToken());
+		K = Integer.parseInt(tokens.nextToken());
+		if(K<=N) {
+			answer = N-K;
+		}else {
+			int len = 2*K+1;
+			visited = new boolean[len];
+			queue.add(new int[] {N, 0});
+			visited[N]=true;
+			while(!queue.isEmpty()) {
+				int[] next = queue.poll();
+				if(next[0]==K) {
+					answer = next[1];
+					break;
+				}
+				if(next[0]-1>=0 && !visited[next[0]-1]) {
+					queue.offer(new int[] {next[0]-1, next[1]+1});
+					visited[next[0]-1] = true;
+				}
+				if(next[0]+1<len && !visited[next[0]+1]) {
+					queue.offer(new int[] {next[0]+1, next[1]+1});				
+					visited[next[0]+1] = true;
+				}
+				if(next[0]*2<len && !visited[next[0]*2]) {
+					queue.offer(new int[] {next[0]*2, next[1]+1});				
+					visited[next[0]*2] = true;
+				}
+			}
+		}
+		output.append(answer).append("\n");
+		System.out.println(output.toString());
+		
+	}
+
+}
+
+
+
+*/
+
