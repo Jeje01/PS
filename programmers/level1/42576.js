@@ -8,3 +8,19 @@ function solution(participant, completion) {
     }
     return participant[participant.length-1]
 }
+
+// 20201119
+
+const solution = (participant, completion) => {
+    participant.sort()
+    completion.sort()
+    let idx = 0
+    while(idx < completion.length){
+        if(participant[idx] === completion[idx]){
+            idx ++
+        }else {
+            return participant[idx]
+        }
+    }
+    return participant[idx]
+}
