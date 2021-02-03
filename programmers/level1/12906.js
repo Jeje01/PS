@@ -10,3 +10,14 @@ function solution(arr)
     }
     return answer;
 }
+
+// 2021.02.03
+const solution = (arr) => {
+    const answer = []
+    arr.forEach((num) => {
+        if (answer[answer.length - 1] !== num){
+            answer.push(num)
+        }
+    })
+    return answer
+}
