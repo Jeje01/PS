@@ -22,3 +22,16 @@ const solution = (s) => {
     })
     return cntp == cnty
 }
+
+// 20210204
+const solution = (s) => {
+    let p = 0, y = 0
+    s.toLowerCase().split("").forEach((a) => {
+        if (a==="p"){
+            p++;
+        } else if (a=="y"){
+            y++;
+        }
+    })
+    return p === y;
+}
