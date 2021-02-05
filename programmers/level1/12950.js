@@ -11,3 +11,13 @@ const solution = (arr1, arr2) => {
     })
     return answer
 }
+
+// 20210204
+const solution = (arr1, arr2) => {
+    arr1.forEach((a, i) => {
+        a.forEach((b, j) => {
+            arr1[i][j] += arr2[i][j]
+        })
+    })
+    return arr1
+}
