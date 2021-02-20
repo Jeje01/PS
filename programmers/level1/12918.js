@@ -10,3 +10,15 @@ function solution(s) {
     }
     return true;
 }
+
+// 2021.02.20
+const solution = (s) => {
+    s = s.split("");
+    let answer = s.length === 4 || s.length === 6;
+    s.forEach((num) => {
+        if (isNaN(num)) {
+            answer = false;
+        }
+    })
+    return answer;
+}
