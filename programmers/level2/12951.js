@@ -13,3 +13,18 @@ function solution(s) {
     });
     return answer.join(" ");
 }
+
+// 2021.02.28
+
+const solution = (s) => {
+    let answer = ""
+    let tmp = s.toLowerCase().split("")
+    tmp.map((alphabet, index) => {
+        if (index === 0 || tmp[index-1] === " ") {
+            answer += alphabet.toUpperCase()
+        } else {
+            answer += alphabet
+        }
+    })
+    return answer
+}
