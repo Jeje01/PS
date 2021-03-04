@@ -13,3 +13,17 @@ const solution = (numbers) => {
     list.sort((a, b) => a-b)
     return list
 }
+
+// 2021.03.04
+
+const solution = (numbers) => {
+    const answer = []
+    numbers.forEach((a, i) => {
+        numbers.forEach((b, j) => {
+            if (i < j){
+                answer.push(a + b) 
+            } 
+        })
+    })
+    return Array.from(new Set(answer)).sort((a, b) => a - b)
+}
