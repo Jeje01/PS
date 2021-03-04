@@ -14,7 +14,7 @@ const solution = (numbers) => {
     return list
 }
 
-// 2021.03.04
+// 2021.03.03
 
 const solution = (numbers) => {
     const answer = []
