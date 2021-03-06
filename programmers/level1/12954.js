@@ -7,3 +7,13 @@ const solution = (x, n) => {
     }
     return answer   
 }
+
+// 2021.03.06
+
+const solution = (x, n) => {
+    const answer = []
+    for (let i = 1; i <= n; i++) {
+        answer.push(x*i)
+    }
+    return answer
+}
