@@ -21,3 +21,18 @@ const solution = (arr) => {
     })
     return answer
 }
+
+// 2021.03.06
+const solution = (arr) => {
+    const answer = []
+    arr.forEach((a, i) => {
+        if (!i) {
+            answer.push(a)
+        } else {
+            if (a !== answer[answer.length - 1]) {
+                answer.push(a)
+            }
+        }
+    })
+    return answer
+}
