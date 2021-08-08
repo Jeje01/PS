@@ -4,6 +4,7 @@
  *
  * slice -> 76ms, 38.7MB
  * splice -> 64ms, 38.6MB
+ * 실행할 때마다 다름
  **/
 const lengthOfLastWord = (s) => {
   return s.trim().split(" ").splice(-1)[0].length
