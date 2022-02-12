@@ -16,6 +16,3 @@ const finalValueAfterOperations = (operations) => {
     })
     return answer
 }
-
-
-// 2
