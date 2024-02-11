@@ -17,3 +17,13 @@ const solution = (n) => {
     }
     return answer
 }
+
+// 2024.02.11
+const solution = (n) => {
+    if (n === 0 || n == 1) return n
+    let answer = 1 + n
+    for (let i = 2; i < n; i++) {
+        answer += n % i === 0 ? i : 0
+    }
+    return (answer)
+}
